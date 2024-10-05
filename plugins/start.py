@@ -17,7 +17,7 @@ from database.database import add_user, del_user, full_userbase, present_user
 
 """add time im seconds for waitingwaiting before delete 
 1min=60, 2min=60×2=120, 5min=60×5=300"""
-SECONDS = int(os.getenv("SECONDS", "600"))
+SECONDS = int(os.getenv("SECONDS", "1800"))
 
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
@@ -89,7 +89,7 @@ async def start_command(client: Client, message: Message):
                 snt_msgs.append(snt_msg)
             except:
                 pass
-        await message.reply_text("Files will be deleted in 10 minutes.\nForward to saved messages before downloading")
+        await message.reply_text("🚨 NOTE :\n\nᴛʜɪꜱ ᴍᴇᴅɪᴀ ᴍᴇꜱꜱᴀɢᴇꜱ ᴡɪʟʟ ʙᴇ ᴅᴇʟᴇᴛᴇᴅ ᴀꜰᴛᴇʀ 30 ᴍɪɴᴜᴛᴇꜱ. ᴘʟᴇᴀꜱᴇ ꜱᴀᴠᴇ ᴏʀ ꜰᴏʀᴡᴀʀᴅ ᴛʜɪꜱ ᴍᴇᴅɪᴀ ᴍᴇꜱꜱᴀɢᴇꜱ ᴛᴏ ʏᴏᴜʀ ᴘᴇʀꜱᴏɴᴀʟ ꜱᴀᴠᴇᴅ ᴍᴇꜱꜱᴀɢᴇꜱ ᴛᴏ ᴀᴠᴏɪᴅ ʟᴏꜱɪɴɢ ᴛʜᴇᴍ!")
         await asyncio.sleep(SECONDS)
 
         for snt_msg in snt_msgs:
@@ -102,8 +102,8 @@ async def start_command(client: Client, message: Message):
         reply_markup = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("😊 About Me", callback_data = "about"),
-                    InlineKeyboardButton("🔒 Close", callback_data = "close")
+                    InlineKeyboardButton("ᴀʙᴏᴜᴛ", callback_data = "about"),
+                    InlineKeyboardButton("ᴄʟᴏꜱᴇ", callback_data = "close")
                 ]
             ]
         )
@@ -136,15 +136,15 @@ REPLY_ERROR = """<code>Use this command as a replay to any telegram message with
 async def not_joined(client: Client, message: Message):
     buttons = [
         [
-            InlineKeyboardButton(text="Join Channel", url=client.invitelink),
-            InlineKeyboardButton(text="Join Channel", url=client.invitelink2),
+            InlineKeyboardButton(text="✨ ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ ✨", url=client.invitelink),
+            InlineKeyboardButton(text="✨ ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ ✨", url=client.invitelink2),
         ]
     ]
     try:
         buttons.append(
             [
                 InlineKeyboardButton(
-                    text = 'Try Again',
+                    text = '𝐓𝐫𝐲 𝐀𝐠𝐚𝐢𝐧',
                     url = f"https://t.me/{client.username}?start={message.command[1]}"
                 )
             ]
